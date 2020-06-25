@@ -2,9 +2,7 @@ package main.java.master.clazz.faltdor.Algorithms.warmup;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class PlusMinus {
     // Complete the plusMinus function below.
@@ -33,9 +31,23 @@ public class PlusMinus {
         System.out.printf("%.6f", totalZero);
     }
 
+    static int maxArr(int[] arr) {
+        Map<Integer, Integer> cases = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            cases.merge(arr[i], 1, Integer::sum);
+        }
+        return Collections.max(cases.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
+    }
+
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        int[] arr = {2,3,4,3,2,1};
+        System.out.print(maxArr(arr));
+    }
+
+
+    public  void mainre(String[] args) {
         int n = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
